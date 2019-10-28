@@ -9,7 +9,7 @@ const siteContent = {
     "img-src": "img/logo.png"
   },
   "cta": {
-    "h1": "DOM Is Awesome",
+    "h1": "DOM<br> Is<br> Awesome",
     "button": "Get Started",
     "img-src": "img/header-img.png"
   },
@@ -28,7 +28,7 @@ const siteContent = {
   },
   "contact": {
     "contact-h4" : "Contact",
-    "address" : "123 Way 456 Street Somewhere, USA",
+    "address" : "123 Way 456<br> Street Somewhere, USA",
     "phone" : "1 (888) 888-8888",
     "email" : "sales@greatidea.io",
   },
@@ -42,21 +42,39 @@ let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 
 let nav = document.querySelector("nav")
-console.log(nav)
+// console.log(nav)
 nav.children[0].innerHTML = "dd"
-console.log(nav.children)
+// console.log(nav.children)
 let nav_items = Object.keys(siteContent["nav"]).filter(item => item.includes("nav-item"))
-console.log(nav_items)
+// console.log(nav_items)
 
-// for some reason we can introduce an extra parameter to map and it doesn't complain
+// for some reason we can introduce an extra parameter to map and it doesn't complain(probably because of closure)
 let set_nav_stuff = (arr1, arr2) => {
   arr1.forEach((k, i) => {
       k.innerHTML = siteContent["nav"][arr2[i]]
+      k.setAttribute("style", "color: green")
+      // console.log(k.attributes)
+      // k.color = "green"
 })
 
 };
-console.log("here")
+// console.log("here")
 set_nav_stuff(Array.from(nav.children), nav_items)
+nav.appendChild(document.createElement("A"))
+nav.children[nav.children.length - 1].innerHTML = "appended link"
+nav.children[nav.children.length - 1].setAttribute("style", "color: green")
+
+nav.prepend(document.createElement("A"))
+nav.children[0].innerHTML = "prepended link"
+nav.children[0].setAttribute("style", "color: green")
+
+// for(let i = 0; i < nav.children.length; i++) {
+//   // nav.children[i].color = "green"
+//   console.log(nav.children[i].attributes)
+// }
+// nav.children.forEach(link => {
+//   link.color = "green"
+// })
 
 // let nav_item_names = []
 // nav_items.forEach(nav_item => {
@@ -68,7 +86,7 @@ set_nav_stuff(Array.from(nav.children), nav_items)
 //   link.innerHTML = 
 // })
 let call_to_action = document.querySelector(".cta")
-console.log(call_to_action.children)
+// console.log(call_to_action.children)
 // "cta": {
 //   "h1": "DOM Is Awesome",
 //   "button": "Get Started",
@@ -79,7 +97,7 @@ call_to_action.querySelector(".cta-text").children[1].innerHTML = siteContent["c
 call_to_action.children[1].setAttribute("src", siteContent["cta"]["img-src"])
 
 let main_content = document.querySelector(".main-content")
-console.log(main_content)
+// console.log(main_content)
 // "main-content": {
 //   "features-h4":"Features",
 //   "features-content": "Features content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
@@ -104,9 +122,9 @@ let bottom_content_text_content_1 = bottom_content.children[0]
 let bottom_content_text_content_2 = bottom_content.children[1]
 let bottom_content_text_content_3 = bottom_content.children[2]
 
-console.log(top_content)
-console.log(top_content_text_content_1)
-console.log(top_content_text_content_1.children)
+// console.log(top_content)
+// console.log(top_content_text_content_1)
+// console.log(top_content_text_content_1.children)
 // when filling the text between tags have to use
 // the .innerHTML property directly
 top_content_text_content_1.children[0].innerHTML = siteContent["main-content"]["features-h4"]
@@ -137,7 +155,7 @@ bottom_content_text_content_3.children[1].innerHTML = siteContent["main-content"
 // bottom_content_text_content_3.innerHTML = siteContent["main-content"]["services-content"]
 
 let contact = document.querySelector(".contact")
-console.log(contact)
+// console.log(contact)
 // "contact": {
 //   "contact-h4" : "Contact",
 //   "address" : "123 Way 456 Street Somewhere, USA",
@@ -160,3 +178,5 @@ let footer = document.querySelector("footer")
 // }
 
 footer.querySelector("p").innerHTML = siteContent["footer"]["copyright"]
+
+
