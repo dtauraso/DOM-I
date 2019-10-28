@@ -40,3 +40,47 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+let nav = document.querySelector("nav")
+console.log(nav)
+nav.children[0].innerHTML = "dd"
+console.log(nav.children)
+let nav_items = Object.keys(siteContent["nav"]).filter(item => item.includes("nav-item"))
+console.log(nav_items)
+
+// for some reason we can introduce an extra parameter to map and it doesn't complain
+let set_nav_stuff = (arr1, arr2) => {
+  arr1.forEach((k, i) => {
+      k.innerHTML = siteContent["nav"][arr2[i]]
+})
+
+};
+console.log("here")
+set_nav_stuff(Array.from(nav.children), nav_items)
+
+// let nav_item_names = []
+// nav_items.forEach(nav_item => {
+//   nav_item_names.push(siteContent["nav"][nav_item])
+// })
+// console.log(nav_item_names)
+
+// nav.children.forEach(link => {
+//   link.innerHTML = 
+// })
+let call_to_action = document.querySelector(".cta")
+// console.log(call_to_action)
+// "cta": {
+//   "h1": "DOM Is Awesome",
+//   "button": "Get Started",
+//   "img-src": "img/header-img.png"
+// }
+
+let main_content = document.querySelector(".main-content")
+// console.log(main_content)
+
+let contact = document.querySelector(".contact")
+// console.log(contact)
+
+let footer = document.querySelector("footer")
+
+// console.log(footer)
