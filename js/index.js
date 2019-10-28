@@ -68,12 +68,15 @@ set_nav_stuff(Array.from(nav.children), nav_items)
 //   link.innerHTML = 
 // })
 let call_to_action = document.querySelector(".cta")
-// console.log(call_to_action)
+console.log(call_to_action.children)
 // "cta": {
 //   "h1": "DOM Is Awesome",
 //   "button": "Get Started",
 //   "img-src": "img/header-img.png"
 // }
+call_to_action.querySelector(".cta-text").children[0].setAttribute("innerHTML", siteContent["cta"]["h1"])
+call_to_action.querySelector(".cta-text").children[1].setAttribute("innerHTML", siteContent["cta"]["button"])
+call_to_action.children[1].setAttribute("src", siteContent["cta"]["img-src"])
 
 let main_content = document.querySelector(".main-content")
 // console.log(main_content)
